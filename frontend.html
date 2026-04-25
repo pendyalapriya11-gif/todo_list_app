@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type = "text" id="taskinput" placeholder="enter task">
+    <button id="AddTask">Add</button>
+    <div id = "tasklist"></div>
+  </div>
+  <script>
+    let tasks = [];
+    function deleteTask(i) {
+      tasks.splice(i,1);
+      renderHTML();
+    }
+    function toggleTask(i) {
+      tasks[i].completed = !tasks[i].toggle;
+      renderHTML();
+    }
+    function renderHTML() {
+      let taskhtml = '';
+      
+      for(let i=0;i<tasks.length;i++) {
+        let task = tasks[i];
+        let taskText= '';
+        if(task.completed) {
+        taskText = `<s>${task.name}<s>`
+      }
+      else {
+        taskText = tasks[i].name;
+      }
+        taskhtml+=`
+        <input type="checkbox" 
+        ${task.completed ? "checked" : ""}
+        onchange="toggleTask(${i})">
+        ${taskText}
+          <button onclick="deleteTask(${i})">Delete</button>
+        `;
+      }
+      document.getElementById("tasklist").innerHTML = taskhtml;
+    }
+    //adding a task to tasks[] for displaying on the screen
+    button = document.getElementById("AddTask");
+    button.addEventListener("click", ()=> {
+        let input = document.getElementById("taskinput");
+        let name = input.value;
+        if(name==='') {
+          alert("Add Any Task");
+        }
+        else {
+          tasks.push({name: name,completed: false});
+          renderHTML();
+        }
+        input.value = '';
+    });
+  </script>
+</body>
+</html>
