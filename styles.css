@@ -1,0 +1,86 @@
+
+body {
+  background: #190019
+}
+
+.container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.input-class{
+  display:flex;
+  gap: 10px; 
+}
+
+#taskinput {
+  padding-left: 20px;
+  width: 300px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  background-color: #52285B;
+  margin-top: 20px;
+  color: #FBE4D8;
+  border-radius: 4px;
+}
+
+#taskinput::placeholder {
+  color: #FBE4D8;
+}
+#AddTask {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border: none;
+  margin-top: 20px;
+  background-color: #52285B;
+  color: #FBE4D8;
+  border-radius: 4px;
+}
+
+#tasklist {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskshtml {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #461649;
+  color: #FBE4D8;
+  font-size: 20px;
+}
+
+.delete-button {
+  padding: 10px;
+  border-radius: 4px;
+  width: 100px;
+  border: none;
+  background-color:#461649;; 
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif; 
+  color: #FBE4D8;
+}
+
+input[type="checkbox"] {
+  transform: scale(2.0);
+  margin-right: 10px;
+}
