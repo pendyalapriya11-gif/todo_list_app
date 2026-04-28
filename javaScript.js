@@ -32,6 +32,10 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
       }
       document.getElementById("tasklist").innerHTML = taskhtml;
       localStorage.setItem("tasksarray",JSON.stringify(tasks));
+      let total = tasks.length;
+      let completedtasks = tasks.filter(task1=> task1.completed === true).length;
+      let remainingtasks = total - completedtasks;
+      document.querySelector(".task_counter").innerHTML = `Total: ${total}  | Completed: ${completedtasks} | Remaining: ${remainingtasks}`;
     }
     //event delegation
     document.querySelector('#tasklist').addEventListener("click",(event) => {
