@@ -4,6 +4,10 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
       tasks.splice(i,1);
       renderHTML();
     }
+    function clearCompleted() {
+      tasks = tasks.filter(task => task.completed===false);
+      renderHTML();
+    }
     function toggleTask(i) {
       tasks[i].completed = !tasks[i].completed;
       renderHTML();
@@ -15,7 +19,7 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
         let task = tasks[i];
         let taskText= '';
         if(task.completed) {
-        taskText = `<s>${task.name}</s>`
+        taskText = `<span class="completedtask">${task.name}</span>`;
       }
       else {
         taskText = task.name;
@@ -30,13 +34,17 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
           </div>
         `;
       }
+
       document.getElementById("tasklist").innerHTML = taskhtml;
+      //adding the local storage
       localStorage.setItem("tasksarray",JSON.stringify(tasks));
+      //implementing task counter
       let total = tasks.length;
       let completedtasks = tasks.filter(task1=> task1.completed === true).length;
       let remainingtasks = total - completedtasks;
       document.querySelector(".task_counter").innerHTML = `Total: ${total}  | Completed: ${completedtasks} | Remaining: ${remainingtasks}`;
     }
+
     //event delegation
     document.querySelector('#tasklist').addEventListener("click",(event) => {
       if(event.target.getAttribute("data-index")===null) return;
@@ -48,12 +56,10 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
            toggleTask(index);
         }
       });
-    //adding a task to tasks[] for displaying on the screen
-    button = document.getElementById("AddTask");
-    button.addEventListener("click", ()=> {
+      function addTask() {
         let input = document.getElementById("taskinput");
         let name = input.value;
-        if(name==='') {
+        if(name.trim()==='') {
           alert("Add Any Task");
         }
         else {
@@ -61,4 +67,19 @@ let tasks = JSON.parse(localStorage.getItem("tasksarray")) || [];
           renderHTML();
         }
         input.value = '';
+      }
+    //adding a task to tasks[] for displaying on the screen
+    button = document.getElementById("AddTask");
+    button.addEventListener("click", ()=> {
+        addTask();
+    });
+    document.querySelector("#taskinput").addEventListener("keydown", (event)=> {
+      if(event.key === "Enter") {
+        addTask();
+      } 
+    });
+    let clearbutton = document.getElementById("clearCompleted");
+    clearbutton.addEventListener("click", ()=> {
+      clearCompleted();
+      renderHTML();
     });
