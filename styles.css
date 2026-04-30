@@ -19,62 +19,44 @@ body {
   display:flex;
   gap: 10px; 
 }
-@media(max-width: 500px) {
-  .input-class {
-    flex-direction: column;
-  }
-}
+
 #taskinput {
-  width: 300px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-top: 20px;
   font-size: 20px;
   font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
   border: none;
   background-color: #52285B;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   color: #FBE4D8;
   border-radius: 4px;
-  margin-bottom: 10px;
   flex: 1;
+  min-width: 0;
 }
 
-#AddTask,
-#clearCompleted {
-  padding: 10px;
-  white-space: nowrap;
-}
 #taskinput::placeholder {
   color: #FBE4D8;
 }
 #AddTask {
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-top: 20px;
   font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
   border: none;
-  margin-top: 20px;
   background-color: #52285B;
   color: #FBE4D8;
   border-radius: 4px;
 }
 #clearCompleted {
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-top: 20px;
   font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
   border: none;
-  margin-top: 20px;
   background-color: #52285B;
   color: #FBE4D8;
   border-radius: 4px;
+}
+
+#AddTask,
+#clearCompleted,
+#taskinput {
+  padding: 14px 20px;
 }
 #tasklist {
   display: flex;
@@ -95,16 +77,11 @@ body {
   color: #FBE4D8;
   font-size: 20px;
 }
-@media (max-width: 500px){
-  .taskshtml {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+
 .delete-button {
   padding: 10px;
   border-radius: 4px;
-  width: 100px;
+  width: auto;
   border: none;
   background-color:#461649;; 
   font-size: 20px;
@@ -113,7 +90,7 @@ body {
 }
 
 input[type="checkbox"] {
-  transform: scale(2.0);
+  transform: scale(1.5);
   margin-right: 10px;
 }
 
@@ -127,11 +104,38 @@ input[type="checkbox"] {
   color: gray;
 }
 
-@media(max-width: 500px) {
-  #AddTask {
+#AddTask:hover,
+#clearCompleted:hover,
+.delete-button:hover {
+  background-color: #6a2c70;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  #taskinput,
+  #AddTask,
+  #clearCompleted {
+    padding: 12px;
+    font-size: 16px;
     width: 100%;
   }
+
   body {
     font-size: 14px;
   }
+
+  input[type="checkbox"] {
+    transform: scale(1.3);
+  }
+
+  .taskshtml {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .delete-button {
+    align-self: flex-end;
+  }
 }
+
