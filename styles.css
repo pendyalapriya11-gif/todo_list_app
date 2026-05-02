@@ -64,7 +64,7 @@ body {
   white-space: nowrap;
 }
 
-@media (max-width: 200px) {
+@media (max-width: 70px) {
   #AddTask,
   #clearCompleted {
     padding: 10px 10px;
